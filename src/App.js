@@ -173,21 +173,23 @@ export default function App() {
         <div className="university-header">
           <div className="uni-container">
             <div className="header-content">
-              <div className="university-logo">
-                <img
-                  src="https://assets.uni-wuppertal.de/relaunch-assets/Resources//Public/Images/logo_header_white.svg"
-                  alt="Bergische Universität Wuppertal Logo"
-                />
-              </div>
-              <div className="header-navigation">
-                <Link to="/" className="header-nav-button">
-                  <i className="material-icons">home</i>
-                  <span>Start</span>
-                </Link>
-                <Link to="/about" className="header-nav-button">
-                  <i className="material-icons">info</i>
-                  <span>Über Uns</span>
-                </Link>
+              <div className="d-flex align-items-center">
+                <div className="university-logo">
+                  <img
+                    src="https://assets.uni-wuppertal.de/relaunch-assets/Resources//Public/Images/logo_header_white.svg"
+                    alt="Bergische Universität Wuppertal Logo"
+                  />
+                </div>
+                <div className="header-navigation">
+                  <Link to="/" className="header-nav-button">
+                    <i className="material-icons">home</i>
+                    <span>Start</span>
+                  </Link>
+                  <Link to="/about" className="header-nav-button">
+                    <i className="material-icons">info</i>
+                    <span>Über Uns</span>
+                  </Link>
+                </div>
               </div>
               <div className="header-settings">
                 <button 

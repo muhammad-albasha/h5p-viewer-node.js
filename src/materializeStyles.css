@@ -70,7 +70,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s;
+  transition: background-color var(--transition-speed);
 }
 
 .header-settings-button:hover {
@@ -83,15 +83,15 @@
 
 .settings-dropdown {
   position: absolute;
-  top: 100%; /* Position below the header-content or settings button */
+  top: 100%; /* Position below the settings button */
   right: 0;
   background-color: white;
   border-radius: 4px;
   box-shadow: var(--box-shadow-2);
-  z-index: 1001; /* Ensure it's above other header content */
+  z-index: 1001;
   min-width: 200px;
   border: 1px solid #e0e0e0;
-  margin-top: 8px; /* Small gap from the button */
+  margin-top: 8px;
 }
 
 .settings-dropdown-item {
@@ -139,7 +139,7 @@
 
 .contrast-mode .settings-dropdown-item {
   color: #000000;
-  border-bottom: 1px solid #000000; /* Add separator for items in contrast */
+  border-bottom: 1px solid #000000;
 }
 
 .contrast-mode .settings-dropdown-item:last-child {
@@ -157,6 +157,18 @@
 
 .contrast-mode .settings-dropdown-item:hover i.material-icons {
   color: #ffffff;
+}
+
+.header-settings {
+  position: relative;
+  display: inline-block;
+}
+.header-settings .settings-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+  margin-top: 4px;
 }
 
 .university-logo {

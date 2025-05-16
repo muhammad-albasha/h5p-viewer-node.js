@@ -236,7 +236,7 @@ export default function App() {
         {/* Department Header */}
         <div className="department-header">
           <div className="uni-container">
-            <h2 className="department-title">H5P-Viewer - Mathematik Lernmaterialien</h2>
+            <h2 className="department-title">Didaktik der Mathematik: H5P-Viewer</h2>
           </div>
         </div>
         

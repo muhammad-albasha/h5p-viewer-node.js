@@ -1,0 +1,1594 @@
+/* Bergische Universität Wuppertal Theme Styles */
+
+/* Global variables */
+:root {
+  --primary-color: #89ba17; /* University green */
+  --primary-light: #a3d739;
+  --primary-dark: #5a7b0d;
+  --secondary-color: #3f719c; /* University blue */
+  --secondary-light: #5b8db8;
+  --secondary-dark: #2b577e;
+  --background-light: #f5f5f5;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+  --transition-speed: 0.3s;
+  --box-shadow-1: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  --box-shadow-2: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --box-shadow-3: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  --border-radius: 2px;
+}
+
+/* University header styles */
+.university-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-navigation {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-nav-button {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.header-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-decoration: none;
+}
+
+.header-nav-button i {
+  margin-right: 6px;
+  font-size: 18px;
+}
+
+/* Header Settings Button and Dropdown */
+.header-settings-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.header-settings-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-settings-button i {
+  font-size: 24px;
+}
+
+.settings-dropdown {
+  position: absolute;
+  top: 100%; /* Position below the header-content or settings button */
+  right: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: var(--box-shadow-2);
+  z-index: 1001; /* Ensure it's above other header content */
+  min-width: 200px;
+  border: 1px solid #e0e0e0;
+  margin-top: 8px; /* Small gap from the button */
+}
+
+.settings-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.settings-dropdown-item i.material-icons {
+  margin-right: 10px;
+  color: var(--secondary-color);
+}
+
+.settings-dropdown-item:hover {
+  background-color: #f5f5f5;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.settings-dropdown-item:hover i.material-icons {
+  color: var(--primary-color);
+}
+
+/* Contrast mode for settings dropdown */
+.contrast-mode .header-settings-button {
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.contrast-mode .header-settings-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+}
+
+.contrast-mode .settings-dropdown {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: none;
+}
+
+.contrast-mode .settings-dropdown-item {
+  color: #000000;
+  border-bottom: 1px solid #000000; /* Add separator for items in contrast */
+}
+
+.contrast-mode .settings-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.contrast-mode .settings-dropdown-item i.material-icons {
+  color: #000000;
+}
+
+.contrast-mode .settings-dropdown-item:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.contrast-mode .settings-dropdown-item:hover i.material-icons {
+  color: #ffffff;
+}
+
+.university-logo {
+  display: flex;
+  align-items: center;
+}
+
+.university-logo img {
+  height: 80px;
+  margin-right: 15px;
+}
+
+.university-name {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.university-name small {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Department header */
+.department-header {
+  background-color: var(--secondary-color);
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.department-title {
+  color: var(--background-light);
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Search field styles */
+.uni-search-container {
+  margin: 25px 0;
+  position: relative;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.uni-search-input {
+  width: 100%;
+  padding: 12px 50px 12px 20px;
+  border-radius: 8px;
+  border: 2px solid #eaeaea;
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.uni-search-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.uni-search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(137, 186, 23, 0.15);
+}
+
+.uni-search-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.uni-search-button .material-icons {
+  font-size: 20px;
+}
+
+.uni-search-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Suggestions styles */
+.suggestions-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 1px solid #f2f2f2;
+  color: #333;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f7f7f7;
+  color: var(--primary-color);
+}
+
+.contrast-mode .suggestions-dropdown {
+  background: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: none;
+}
+
+.contrast-mode .suggestion-item {
+  border-bottom: 1px solid #000000;
+  color: #000000;
+}
+
+.contrast-mode .suggestion-item:hover {
+  background-color: #f0f0f0;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* Sidemenu styles */
+.uni-sidemenu {
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-1);
+  margin-bottom: 20px;
+}
+
+.uni-sidemenu-header {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.uni-sidemenu-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.uni-sidemenu-title i {
+  margin-right: 8px;
+  color: var(--primary-color);
+}
+
+.uni-sidemenu-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.uni-sidemenu-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.uni-sidemenu-item:last-child {
+  border-bottom: none;
+}
+
+.uni-sidemenu-item i {
+  margin-right: 10px;
+  color: #888;
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.uni-sidemenu-item:hover {
+  background-color: #f9f9f9;
+}
+
+.uni-sidemenu-item.active {
+  background-color: rgba(137, 186, 23, 0.1);
+  color: var(--primary-color);
+  border-left: 3px solid var(--primary-color);
+}
+
+.uni-sidemenu-item.active i {
+  color: var(--primary-color);
+}
+
+.uni-sidemenu-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.uni-sidemenu-item:hover .uni-sidemenu-link,
+.uni-sidemenu-item.active .uni-sidemenu-link {
+  color: var(--primary-color);
+}
+
+/* Content card styles */
+.uni-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 0; /* Remove bottom margin for connected appearance with expanded content */
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+  position: relative;
+  z-index: 2; /* Ensure card stays above expanded content at the connection point */
+}
+
+/* Liste von Karten */
+.uni-card-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.uni-card-list-item {
+  width: 100%;
+  margin-bottom: 25px; /* Move margin to list item for spacing between card sets */
+  position: relative; /* For absolutely positioned indicators */
+}
+
+.uni-card-horizontal {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  padding-bottom: 10px; /* Add padding at bottom for the floating button */
+}
+
+.uni-card-horizontal .uni-card-image {
+  width: 280px;
+  min-width: 280px;
+  height: 220px;
+  position: relative;
+}
+
+.uni-card-horizontal .uni-card-content {
+  flex: 1;
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.uni-card:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.uni-card.expanded {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: none;
+  box-shadow: none; /* Remove shadow to create seamless connection with expanded content */
+  border-bottom: 0; /* Remove bottom border to seamlessly connect with expanded content */
+  position: relative;
+  z-index: 2;
+  border-color: var(--primary-color);
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-width: 1px;
+}
+
+/* Add vertical highlight on the sides of expanded card - REMOVING THESE EFFECTS
+.uni-card.expanded::before,
+.uni-card.expanded::after {
+  content: none;
+}
+
+.uni-card.expanded::before {
+  left: 0;
+  border-top-left-radius: 8px;
+}
+
+.uni-card.expanded::after {
+  right: 0;
+  border-top-right-radius: 8px;
+}
+
+.uni-card.expanded:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.uni-card-list-item.expanded .uni-card-button {
+  background-color: var(--secondary-color);
+}
+
+.uni-card-list-item.expanded .uni-card-button:hover {
+  background-color: var(--secondary-dark);
+}
+
+/* Remove vertical indicators for expanded card */
+.uni-card-list-item.expanded::before,
+.uni-card-list-item.expanded::after {
+  content: none;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .uni-card-list-item.expanded::before,
+  .uni-card-list-item.expanded::after {
+    display: none;
+  }
+}
+
+.uni-card-image {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+}
+
+.uni-card-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.uni-card:hover .uni-card-image::after {
+  opacity: 1;
+}
+
+.uni-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.uni-card:hover .uni-card-image img {
+  transform: scale(1.08);
+}
+
+.uni-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.uni-card-title {
+  font-size: 1.3rem;
+  margin: 0 0 12px 0;
+  color: var(--secondary-color);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.uni-card-text {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.uni-card-footer {
+  display: flex;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Icon button that replaces the "Öffnen" button */
+.uni-card-icon-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.uni-card-icon-button i.material-icons {
+  font-size: 20px;
+}
+
+.uni-card-icon-button:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+/* Style for icon button in expanded state - keeping same color as non-expanded */
+.uni-card-list-item.expanded .uni-card-icon-button {
+  background-color: var(--primary-color);
+  box-shadow: none;
+}
+
+.uni-card-list-item.expanded .uni-card-icon-button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* High contrast mode for icon button */
+.contrast-mode .uni-card-icon-button {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: none;
+}
+
+.contrast-mode .uni-card-icon-button:hover {
+  background-color: #333333;
+}
+
+.uni-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.uni-card-tag {
+  background-color: rgba(137, 186, 23, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--primary-dark);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.uni-card:hover .uni-card-tag {
+  background-color: rgba(137, 186, 23, 0.2);
+}
+
+.uni-card-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uni-card-button i.material-icons {
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.uni-card-button:hover {
+  background-color: var(--primary-dark);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Animated button for expanded card */
+.uni-card-list-item.expanded .uni-card-button {
+  background-color: var(--primary-color); /* Keep same green color */
+  position: relative;
+  z-index: 3; /* Ensure button stays above expanded content */
+  box-shadow: none; /* Remove shadow to be consistent with the card */
+}
+
+.uni-card-list-item.expanded .uni-card-button:hover {
+  background-color: var(--primary-dark); /* Keep same hover color as normal state */
+  box-shadow: none; /* Remove shadow on hover as well */
+}
+
+/* Remove the pulse animation */
+.uni-card-list-item.expanded .uni-card-button i.material-icons {
+  animation: none;
+}
+
+/* Filter chips */
+.uni-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.uni-filter-chip {
+  padding: 5px 15px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.uni-filter-chip i {
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.uni-filter-chip:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.uni-filter-chip.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* High contrast mode */
+.contrast-mode .uni-filter-chip {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+
+.contrast-mode .uni-filter-chip.active {
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+}
+
+.contrast-mode .uni-card {
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  box-shadow: none;
+}
+
+.contrast-mode .uni-card-horizontal {
+  background-color: black;
+}
+
+.contrast-mode .uni-card-title,
+.contrast-mode .uni-card-text {
+  color: white;
+}
+
+.contrast-mode .uni-card-footer {
+  border-top: 1px solid white;
+}
+
+.contrast-mode .uni-card-tag {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+
+.contrast-mode .uni-card-button {
+  background-color: white;
+  color: black;
+  border: 2px solid white;
+  box-shadow: none;
+}
+
+.contrast-mode .uni-card-icon-button {
+  background-color: white;
+  color: black;
+  border: 2px solid white;
+  box-shadow: none;
+}
+
+.contrast-mode .uni-card-button i.material-icons,
+.contrast-mode .uni-card-icon-button i.material-icons {
+  color: black;
+}
+
+.contrast-mode .uni-sidemenu {
+  background-color: black;
+  border: 1px solid white;
+}
+
+.contrast-mode .uni-sidemenu-item {
+  border-bottom: 1px solid #333;
+  color: white;
+}
+
+.contrast-mode .uni-sidemenu-item i {
+  color: white;
+}
+
+/* High Contrast Mode */
+.contrast-mode {
+  --primary-color: #000000;
+  --primary-light: #333333;
+  --primary-dark: #000000;
+  --secondary-color: #000000;
+  --secondary-light: #333333;
+  --secondary-dark: #000000;
+  --text-color: #000000;
+  --background-color: #ffffff;
+  --card-background: #ffffff;
+  --border-color: #000000;
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #000000;
+}
+
+.contrast-mode .uni-card,
+.contrast-mode .uni-contact-card,
+.contrast-mode .uni-login-container,
+.contrast-mode .uni-easy-language-section {
+  border: 2px solid #000000;
+  background-color: #ffffff;
+}
+
+.contrast-mode .uni-card-horizontal {
+  border: 2px solid #000000;
+  background-color: #ffffff;
+}
+
+.contrast-mode .uni-card-button,
+.contrast-mode .uni-button {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+}
+
+.contrast-mode .uni-filter-chip {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+}
+
+.contrast-mode .uni-filter-chip.active,
+.contrast-mode .uni-filter-chip:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.contrast-mode .university-header {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.contrast-mode .header-nav-button {
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.contrast-mode .header-nav-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+}
+
+.contrast-mode .department-header {
+  background-color: #ffffff;
+  border-left: 5px solid #000000;
+}
+
+.contrast-mode .department-title {
+  color: #000000;
+}
+
+.contrast-mode .uni-footer {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.contrast-mode .uni-footer-link {
+  color: #ffffff;
+}
+
+.contrast-mode .uni-sidemenu {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+}
+
+.contrast-mode .uni-sidemenu-header {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.contrast-mode .uni-sidemenu-item {
+  border-bottom: 1px solid #000000;
+}
+
+.contrast-mode .uni-sidemenu-item.active,
+.contrast-mode .uni-sidemenu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.contrast-mode .uni-sidemenu-item.active .uni-sidemenu-link,
+.contrast-mode .uni-sidemenu-item:hover .uni-sidemenu-link {
+  color: #000000;
+}
+
+.contrast-mode .uni-search-input {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: none;
+}
+
+.contrast-mode .uni-search-input::placeholder {
+  color: #555555;
+}
+
+.contrast-mode .uni-search-input:focus {
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.contrast-mode .uni-search-button {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: none;
+}
+
+.contrast-mode .uni-search-button:hover {
+  background-color: #333333;
+}
+
+.contrast-mode .uni-card-tag {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.contrast-mode .uni-pagination-item.active {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+}
+
+.contrast-mode .uni-pagination-nav {
+  color: #000000;
+}
+
+.contrast-mode .uni-pagination-nav.disabled {
+  color: #666666;
+}
+
+/* Accessibility tools */
+.accessibility-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 3px 12px;
+  background-color: #f0f0f0;
+  font-size: 0.8rem;
+  min-height: 30px;
+}
+
+.accessibility-button {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--secondary-dark);
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.accessibility-button:hover {
+  background-color: rgba(63, 113, 156, 0.1);
+  border-color: var(--secondary-color);
+}
+
+.accessibility-button img,
+.accessibility-button .material-icons {
+  margin-right: 3px;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+/* Container styles */
+.uni-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Pagination */
+.uni-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.uni-pagination-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  margin: 0 2px;
+  border: none;
+  background-color: transparent;
+}
+
+.uni-pagination-item:hover {
+  background-color: #f0f0f0;
+}
+
+.uni-pagination-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.uni-pagination-nav {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: transparent;
+  border: none;
+  margin: 0 5px;
+}
+
+.uni-pagination-nav:hover:not(.disabled) {
+  background-color: #f0f0f0;
+}
+
+.uni-pagination-nav.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.uni-empty-state {
+  text-align: center;
+  padding: 40px 0;
+  color: #666;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.uni-empty-state p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .university-logo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .university-logo img {
+    margin-bottom: 10px;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .header-navigation {
+    margin-top: 10px;
+  }
+  
+  .uni-filter-chips {
+    flex-wrap: wrap;
+  }
+  
+  .uni-filter-chip {
+    margin-bottom: 10px;
+  }
+  
+  .header-settings-button {
+    margin-left: auto; /* Push to the right if header-content is column */
+  }
+
+  .settings-dropdown {
+    /* Adjust if needed for smaller screens, e.g., full width or different positioning */
+    /* For now, default absolute positioning should work, but might need tweaks based on layout changes */
+  }
+}
+
+@media (max-width: 768px) {
+  .university-logo img {
+    height: 40px;
+  }
+  
+  .university-name {
+    font-size: 1.2rem;
+  }
+  
+  .university-name small {
+    font-size: 0.9rem;
+  }
+    .uni-search-container {
+    margin: 15px 0;
+  }
+  
+  .uni-search-input {
+    padding: 10px 44px 10px 15px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  
+  .uni-search-button {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    right: 5px;
+  }
+  
+  .uni-search-button .material-icons {
+    font-size: 18px;
+  }
+  
+  .suggestions-dropdown {
+    max-height: 250px;
+  }
+  
+  .suggestion-item {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .department-title {
+    font-size: 1.1rem;
+  }
+  .uni-card-horizontal {
+    flex-direction: column;
+    padding-bottom: 20px; /* Increase bottom padding for the icon button on mobile */
+  }
+  
+  .uni-card-horizontal .uni-card-image {
+    width: 100%;
+    height: 180px;
+  }
+  
+  .uni-card-horizontal .uni-card-content {
+    padding: 20px;
+  }
+  
+  .uni-card-title {
+    font-size: 1.2rem;
+  }
+  
+  .uni-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .uni-card-tags {
+    margin-bottom: 5px;
+  }
+  .uni-card-button {
+    width: 100%;
+    text-align: center;
+    padding: 7px 15px;
+    justify-content: center;
+  }
+  
+  .uni-card-icon-button {
+    width: 36px;
+    height: 36px;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .uni-card-icon-button i.material-icons {
+    font-size: 18px;
+  }
+  
+  .uni-card-button i.material-icons {
+    font-size: 16px;
+    margin-right: 4px;
+  }
+  
+  .department-title {
+    font-size: 1.1rem;
+  }
+  
+  .uni-filter-chips {
+    overflow-x: auto;
+    padding-bottom: 5px;  }
+  .accessibility-toolbar {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2px 10px;
+    min-height: 28px;
+    font-size: 0.7rem;
+  }
+  
+  .accessibility-button {
+    margin: 2px 4px;
+    padding: 1px 4px;
+    font-size: 0.7rem;
+  }
+  
+  .accessibility-button img,
+  .accessibility-button .material-icons {
+    font-size: 12px;
+    width: 12px;
+    height: 12px;
+    margin-right: 2px;
+  }
+  
+  .uni-search-container {
+    max-width: 100%;
+  }
+  
+  .uni-card {
+    height: auto;
+  }
+  
+  .uni-contact-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .uni-container {
+    padding: 10px;
+  }
+  
+  .uni-footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .uni-login-container {
+    padding: 20px 15px;
+  }
+}
+
+/* Button styles */
+.uni-button-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.uni-button-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.uni-button-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.uni-button-secondary:hover {
+  background-color: var(--secondary-dark);
+}
+
+/* Footer styles */
+.uni-footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px 0;
+}
+
+.uni-footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.uni-footer-link {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.uni-footer-link:hover {
+  opacity: 0.8;
+  color: white;
+}
+
+/* Contact page styles */
+.uni-contact-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.uni-contact-info h3 {
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.uni-contact-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.uni-contact-address {
+  margin-bottom: 20px;
+}
+
+.uni-contact-address p {
+  margin-bottom: 5px;
+}
+
+.uni-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uni-contact-details p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.uni-contact-details .material-icons {
+  color: var(--primary-color);
+}
+
+.uni-link {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.uni-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* Content areas */
+.uni-content {
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.uni-content h3 {
+  color: var(--secondary-color);
+  margin: 25px 0 15px 0;
+}
+
+.uni-content p {
+  margin-bottom: 15px;
+}
+
+/* Login form styles */
+.uni-login-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.uni-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.uni-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.uni-form-group label {
+  font-weight: 500;
+  color: var(--secondary-dark);
+}
+
+.uni-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.uni-input-container .material-icons {
+  position: absolute;
+  left: 10px;
+  color: var(--secondary-color);
+}
+
+.uni-input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.uni-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(137, 186, 23, 0.2);
+}
+
+.uni-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.uni-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.uni-error-message {
+  color: #d32f2f;
+  background-color: rgba(211, 47, 47, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* Easy language page styles */
+.uni-easy-language {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.uni-easy-language-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 5px solid var(--primary-color);
+}
+
+.uni-easy-language h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+}
+
+.uni-easy-language p {
+  margin-bottom: 20px;
+}
+
+/* Expandable card styles */
+.uni-card-list-item.expanded {
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.uni-card.expanded {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+}
+
+.uni-card-expanded-content {
+  background-color: white;
+  border: 1px solid var(--primary-color);
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+  box-shadow: none; /* Remove shadow between card and expanded content */
+  margin-top: -1px; /* Slight overlap with parent card for seamless connection */
+  position: relative;
+  z-index: 1;
+  opacity: 0; /* Start transparent */
+}
+
+.uni-card-list-item.expanded .uni-card-expanded-content {
+  max-height: 800px;
+  box-shadow: none; /* Remove shadow to match card */
+  opacity: 1; /* Fade in */
+}
+
+.uni-card-expanded-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 400px;
+  padding-top: 0; /* Remove top padding */
+  position: relative;
+}
+
+/* Remove the connector gradient */
+.uni-card-expanded-layout::before {
+  content: none;
+}
+
+.uni-card-h5p-container {
+  background: #ffffff;
+  padding: 20px;
+  height: 100%;
+  min-height: 400px;
+  overflow: auto;
+  border-radius: 0 0 8px 8px; /* Round the bottom corners to match the card */
+}
+
+/* High contrast mode styles for expandable cards */
+.contrast-mode .uni-card-expanded-content {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-top: none;
+  margin-top: -2px; /* Adjust for border thickness */
+  box-shadow: none; /* Ensure no shadow in high contrast mode */
+}
+
+.contrast-mode .uni-card.expanded {
+  border-bottom: none;
+  border: 2px solid #000000;
+  border-bottom: 0;
+  box-shadow: none; /* Ensure no shadow in high contrast mode */
+}
+
+.contrast-mode .uni-card-h5p-container {
+  background-color: #ffffff;
+}
+
+/* Responsive styles for expandable cards */
+@media (max-width: 1024px) {
+  .uni-card-h5p-container {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .uni-card-list-item.expanded {
+    margin-bottom: 20px;
+  }
+  
+  .uni-card-h5p-container {
+    padding: 15px;
+    min-height: 250px;
+  }
+  
+  /* Simplified visual connection on mobile */
+  .uni-card.expanded {
+    border-color: var(--primary-color);
+    border-width: 1px;
+    border-bottom: 0;
+  }
+  
+  .uni-card-expanded-content {
+    border-color: var(--primary-color);
+    border-width: 1px;
+    border-top: none;
+  }
+}

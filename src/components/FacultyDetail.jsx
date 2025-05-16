@@ -2,19 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import PlayH5p from "./PlayH5p";
 import Popup from "./Popup";
-import FacultyMenu from "./FacultyMenu";
+import MaterializeFacultyMenu from "./MaterializeFacultyMenu";
 
 const FacultyDetail = ({ isContrast }) => {
   const { name } = useParams();
-  const [h5pData, setH5pData] = useState([]);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [h5pData, setH5pData] = useState([]);  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [currentContent, setCurrentContent] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Alle");
-  const [isScrollable, setIsScrollable] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const sliderRef = useRef(null);
   const searchInputRef = useRef(null);
 
   // Daten für die Fakultät und zugehörige H5P-Inhalte laden
@@ -49,22 +46,7 @@ const FacultyDetail = ({ isContrast }) => {
       }
     };
 
-    fetchH5PDataForFaculty();
-  }, [name]);
-
-  // Prüfe, ob der Slider scrollbar ist
-  useEffect(() => {
-    const checkScrollable = () => {
-      if (sliderRef.current) {
-        setIsScrollable(
-          sliderRef.current.scrollWidth > sliderRef.current.clientWidth
-        );
-      }
-    };
-    checkScrollable();
-    window.addEventListener("resize", checkScrollable);
-    return () => window.removeEventListener("resize", checkScrollable);
-  }, [h5pData, searchTerm, selectedCategory]);
+    fetchH5PDataForFaculty();  }, [name]);
 
   // Kategorien ableiten
   const categories = ["Alle", ...new Set(h5pData.map((item) => item.category))];
@@ -102,7 +84,6 @@ const FacultyDetail = ({ isContrast }) => {
       setShowSuggestions(true);
     }
   };
-
   const handleSearchBlur = () => {
     // Kurze Verzögerung, damit Klicks auf Vorschläge registriert werden
     setTimeout(() => {
@@ -110,182 +91,113 @@ const FacultyDetail = ({ isContrast }) => {
     }, 100);
   };
 
-  const scrollLeft = () => {
-    if (sliderRef.current && isScrollable) {
-      sliderRef.current.scrollBy({
-        left: -300,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (sliderRef.current && isScrollable) {
-      sliderRef.current.scrollBy({
-        left: 300,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <div className="container-fluid" style={{ padding: "0 0" }}>
+    <div className={`uni-container ${isContrast ? "contrast-mode" : ""}`}>
       {/* Layout: Seitenmenü und Inhalt */}
       <div className="row g-0">
         <div className="col-md-3 p-0">
-          <FacultyMenu isContrast={isContrast} />
+          <MaterializeFacultyMenu isContrast={isContrast} />
         </div>
-        <div className="col-md-9 p-0">
-          <div className="row">
-            <div className="col-12 text-center">
-              <h2>{decodeURIComponent(name)}</h2>
-            </div>
+        <div className="col-md-9 p-2">
+          <div className="department-header">
+            <h2 className="department-title">{decodeURIComponent(name)}</h2>
           </div>
-          {/* Suchfeld mit Dropdown für Vorschläge */}
-          <div className="row mb-2">
-            <div className="col-12 d-flex justify-content-center position-relative">
-              <input
-                type="text"
-                placeholder="Suchen..."
-                value={searchTerm}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                  setShowSuggestions(true);
-                }}
-                onFocus={handleSearchFocus}
-                onBlur={handleSearchBlur}
-                className="custom-search-input"
-                ref={searchInputRef}
-              />
-              {showSuggestions && searchTerm && (
-                <div className="suggestions-dropdown">
-                  {suggestions.length > 0 ? (
-                    suggestions.map((suggestion) => (
-                      <div
-                        key={suggestion.id}
-                        className="suggestion-item"
-                        onMouseDown={() => handleSuggestionClick(suggestion)}
-                      >
-                        {suggestion.name}
-                      </div>
-                    ))
-                  ) : (
-                    <div className="suggestion-item">
-                      Keine Vorschläge gefunden
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-          {/* Filterbuttons */}
-          <div className="row mb-2">
-            <div className="col-12 d-flex justify-content-center">
-              <div className="custom-filter-container">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`custom-filter-button ${
-                      selectedCategory === category ? "active" : ""
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-          {/* Slider-Container für H5P-Karten */}
-          <div className="slider-container">
-            <button
-              className={`custom-slider-button left ${
-                !isScrollable ? "disabled" : ""
-              }`}
-              onClick={scrollLeft}
-              disabled={!isScrollable}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#89ba17"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M14 18L8 12l6-6" />
-              </svg>
+          
+          {/* Search field */}
+          <div className="uni-search-container">
+            <input
+              type="text"
+              placeholder="Suchen Sie nach Lernmaterialien..."
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setShowSuggestions(true);
+              }}
+              onFocus={handleSearchFocus}
+              onBlur={handleSearchBlur}
+              className="uni-search-input"
+              ref={searchInputRef}
+            />
+            <button className="uni-search-button">
+              <i className="material-icons">search</i>
             </button>
-            <div className="slider-track" ref={sliderRef}>
-              {filteredData.map((item) => (
-                <div key={item.id} className="slider-item">
-                  <div
-                    className="card custom-card shadow-sm"
-                    onClick={() =>
-                      handleBoxClick(
-                        <PlayH5p h5pJsonPath={item.h5pJsonPath} />,
-                        item.info
-                      )
-                    }
-                  >
+            {showSuggestions && searchTerm && (
+              <div className="suggestions-dropdown">
+                {suggestions.length > 0 ? (
+                  suggestions.map((suggestion) => (
                     <div
-                      className="card-img-top"
-                      style={{
-                        height: "150px",
-                        backgroundImage: `url(${item.previewImage})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
+                      key={suggestion.id}
+                      className="suggestion-item"
+                      onMouseDown={() => handleSuggestionClick(suggestion)}
+                    >
+                      {suggestion.name}
+                    </div>
+                  ))
+                ) : (
+                  <div className="suggestion-item">
+                    Keine Vorschläge gefunden
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Category filter chips */}
+          <div className="uni-filter-chips">
+            {categories.map((category) => (
+              <div 
+                key={category} 
+                className={`uni-filter-chip ${selectedCategory === category ? "active" : ""}`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                <i className="material-icons">
+                  {category === "Alle" ? "apps" : "folder"}
+                </i>
+                {category}
+              </div>
+            ))}
+          </div>
+
+          {/* Content cards */}
+          <div className="row">
+            {filteredData.map((item) => (
+              <div key={item.id} className="col-lg-4 col-md-6 mb-4">
+                <div 
+                  className="uni-card"
+                  onClick={() => handleBoxClick(
+                    <PlayH5p h5pJsonPath={item.h5pJsonPath} />,
+                    item.info
+                  )}
+                >
+                  <div className="uni-card-image">
+                    <img src={item.previewImage} alt={item.name} />
+                  </div>
+                  <div className="uni-card-content">
+                    <h3 className="uni-card-title">{item.name}</h3>
+                    <p className="uni-card-text">
+                      {item.info.substring(0, 100)}...
+                    </p>
+                    <div className="uni-card-tags">
+                      <span className="uni-card-tag">{item.category}</span>
+                    </div>
+                    <button 
+                      className="uni-card-button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleBoxClick(
+                          <PlayH5p h5pJsonPath={item.h5pJsonPath} />,
+                          item.info
+                        );
                       }}
                     >
-                      <div className="image-overlay" />
-                    </div>
-                    <div className="card-body text-center">
-                      <h5 className="card-title">{item.name}</h5>
-                      <div className="card-text small text-muted text-start">
-                        {item.info.substring(0, 60)}...
-                      </div>
-                      <button
-                        className="custom-link-button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleBoxClick(
-                            <PlayH5p h5pJsonPath={item.h5pJsonPath} />,
-                            item.info
-                          );
-                        }}
-                      >
-                        Mehr erfahren →
-                      </button>
-                    </div>
+                      Mehr erfahren
+                    </button>
                   </div>
                 </div>
-              ))}
-            </div>
-            <button
-              className={`custom-slider-button right ${
-                !isScrollable ? "disabled" : ""
-              }`}
-              onClick={scrollRight}
-              disabled={!isScrollable}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#89ba17"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M10 6l6 6-6 6" />
-              </svg>
-            </button>
+              </div>
+            ))}
           </div>
+
           {isPopupOpen && (
             <Popup
               content={currentContent.content}

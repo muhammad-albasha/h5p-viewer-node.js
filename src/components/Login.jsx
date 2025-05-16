@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MaterializeContainer from "./MaterializeContainer";
 
-export default function Login({ setAuthenticated }) {
+export default function Login({ setAuthenticated, isContrast }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -38,28 +39,53 @@ export default function Login({ setAuthenticated }) {
   };
 
   return (
-    <div className="login-container">
-      <h2 className="login-title">Anmelden</h2>
-      <form className="login-form" onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Email"
-          className="login-input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Passwort"
-          className="login-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" className="login-button">
-          Anmelden
-        </button>
-        {error && <p className="error-message">{error}</p>}
-      </form>
-    </div>
+    <MaterializeContainer isContrast={isContrast}>
+      <div className="department-header">
+        <h2 className="department-title">Anmelden</h2>
+      </div>
+      
+      <div className="uni-content">
+        <div className="uni-login-container">
+          <form className="uni-login-form" onSubmit={handleLogin}>
+            <div className="uni-form-group">
+              <label htmlFor="email">E-Mail</label>
+              <div className="uni-input-container">
+                <i className="material-icons">email</i>
+                <input
+                  type="text"
+                  id="email"
+                  placeholder="Ihre E-Mail-Adresse"
+                  className="uni-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
+            
+            <div className="uni-form-group">
+              <label htmlFor="password">Passwort</label>
+              <div className="uni-input-container">
+                <i className="material-icons">lock</i>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Ihr Passwort"
+                  className="uni-input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+            
+            <button type="submit" className="uni-button">
+              <i className="material-icons">login</i>
+              Anmelden
+            </button>
+            
+            {error && <p className="uni-error-message">{error}</p>}
+          </form>
+        </div>
+      </div>
+    </MaterializeContainer>
   );
 }
